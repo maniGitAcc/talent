@@ -1,0 +1,11 @@
+id|name|availableDate|lockStatus
+1001|Ashok Kumar|05/05/2025|unlock
+1002|Benz Charlie|05/01/2025|lock
+1003|Kumar|05/02/2025|unlock
+1004|Dinesh Suman|03/01/2025|lock
+1005|Sumath Chandra|06/04/2025|unlock
+1006|Saravana Palanivel|06/03/2025|unlock
+1007|Bharath Arnald|03/22/2025|unlock
+1008|Bhaskar Benz|02/21/2025|unlock
+1009|Vimal Chandru|04/22/2025|lock
+1010|Suraj Raman|04/12/2025|lock
