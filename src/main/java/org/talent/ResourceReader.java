@@ -6,14 +6,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class ResourceReader {
+    private static final Logger logger = Logger.getLogger(ResourceReader.class.getName());
 
     public static void main(String[] args) {
         ResourceReader reader = new ResourceReader();
         try {
-            List<Associate> associates = getAssociatesFromFile(reader);
+            List<Associate> associates = getAssociatesFromAvailableFile(reader);
 
             //List of all unlock associates
             List<Associate> unlockAssociates = getAssociates(associates, "unlock");
@@ -23,6 +25,10 @@ public class ResourceReader {
 
             //list of all locked associates
             List<Associate> lockAssociates = getAssociates(associates, "lock");
+
+            //assign associate to project
+            TalentService talentService = new TalentService();
+            talentService.assignAssociateToProject(lockAssociates);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,8 +44,8 @@ public class ResourceReader {
         return unlockAssociates;
     }
 
-    private static List<Associate> getAssociatesFromFile(ResourceReader reader) throws IOException {
-        String fileContent = reader.readFileFromResources("associate.txt");
+    private static List<Associate> getAssociatesFromAvailableFile(ResourceReader reader) throws IOException {
+        String fileContent = reader.readFileFromResources("available_associates.txt");
         List<String> records = Arrays.stream(fileContent.split("\r\n")).skip(1).collect(Collectors.toList());
         List<Associate> associates = new ArrayList<>();
         for (String s : records) {
