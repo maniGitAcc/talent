@@ -1,7 +1,8 @@
-package org.talent;
+package org.talent.service;
 
 import org.talent.bean.Associate;
 import org.talent.bean.ProjectAssociate;
+import org.talent.reader.ResourceReader;
 
 import java.io.IOException;
 import java.util.*;
@@ -55,7 +56,7 @@ public class TalentService {
         ResourceReader reader = new ResourceReader();
         List<ProjectAssociate> projectAssociates = getAssociatesFromProjectFile(reader);
         projectAssociates.add(newAssociate);
-        System.out.println("New Associate is added to the project with size : " + projectAssociates.size());
+        System.out.println("New Associate has been added to the project. No of Project Associates are : " + projectAssociates.size());
         projectAssociates.forEach(System.out::println);
     }
 
